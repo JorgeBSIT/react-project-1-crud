@@ -1,9 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./Home"
+import Create from "./Create";
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path ='/' element={<Home />}></Route>
+        <Route path ='/create' element={<Create />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
