@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.post('/student', (req, res) => {
+app.post('/create', (req, res) => {
     const sql = "INSERT INTO student (`name`, `course`, `email`, `phone`) VALUES (?, ?, ?, ?)";
     const values = [
         req.body.name,
@@ -52,7 +52,7 @@ app.get("/read/:id", (req, res) => {
     })
 })
 
-app.put('/student/:id', (req, res) => {
+app.put('/update/:id', (req, res) => {
     const sql = "UPDATE student SET `name` = ?, `course` = ?, `email` = ?, `phone` = ? WHERE id = ?";
     const id = req.params.id;
     const values = [
@@ -67,6 +67,17 @@ app.put('/student/:id', (req, res) => {
             return res.json({Message: "Error inside server"});
         }
         return res.json({Message: "Student updated successfully"});
+    })
+})
+
+app.delete('/delete/:id', (req, res) => {
+    const sql = "DELETE FROM student WHERE id = ?";
+    const id = req.params.id;
+    db.query(sql, [id], (err, result) => {
+        if(err) {
+            return res.json({Message: "Error inside server"});
+        }
+        return res.json({Message: "Student deleted successfully"});
     })
 })
 

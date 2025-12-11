@@ -14,7 +14,7 @@ function Create() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/student', values)
+        axios.post('http://localhost:8081/create', values)
         .then(res => {
             console.log(res);
             navigate('/');

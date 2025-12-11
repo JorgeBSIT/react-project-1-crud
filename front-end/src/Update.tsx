@@ -24,7 +24,7 @@ function Update() {
 
     const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        axios.put('http://localhost:8081/student/' + id, values)
+        axios.put('http://localhost:8081/update/' + id, values)
         .then(res => {
             console.log(res);
             navigate('/');
