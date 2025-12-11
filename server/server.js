@@ -24,17 +24,18 @@ app.get("/", (req, res) => {
 })
 
 app.post('/student', (req, res) => {
-    const sql = "INSERT INTO student (`name`, `course`, `email`, `phone`) VALUES (?)";
+    const sql = "INSERT INTO student (`name`, `course`, `email`, `phone`) VALUES (?, ?, ?, ?)";
     const values = [
         req.body.name,
         req.body.course,
         req.body.email,
         req.body.phone
     ]
-    db.query(sql, [values], (err, result) => {
+    db.query(sql, values, (err, result) => {
         if(err) {
             return res.json({Message: "Error inside server"});
         }
+        return res.json({Message: "Student added successfully"});
     })
 })
 
@@ -48,6 +49,24 @@ app.get("/read/:id", (req, res) => {
             return res.json({Message: "Error inside server"});
         }
         return res.json(result);
+    })
+})
+
+app.put('/student/:id', (req, res) => {
+    const sql = "UPDATE student SET `name` = ?, `course` = ?, `email` = ?, `phone` = ? WHERE id = ?";
+    const id = req.params.id;
+    const values = [
+        req.body.name,
+        req.body.course,
+        req.body.email,
+        req.body.phone,
+        id
+    ]
+    db.query(sql, values, (err, result) => {
+        if(err) {
+            return res.json({Message: "Error inside server"});
+        }
+        return res.json({Message: "Student updated successfully"});
     })
 })
 

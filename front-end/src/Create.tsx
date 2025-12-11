@@ -85,10 +85,10 @@ function Create() {
                     {/* Buttons */}
                     <div className="d-flex gap-2">
                         <Link to="/" className="btn btn-secondary">
-                        Back
+                            Back
                         </Link>
                         <button type="submit" className="btn btn-info text-white">
-                        Submit Information
+                            Submit Information
                         </button>
                     </div>
 
