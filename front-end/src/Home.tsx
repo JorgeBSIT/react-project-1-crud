@@ -57,8 +57,8 @@ function Home() {
                   <td>{student.phone}</td>
 
                   <td className="d-flex gap-2 justify-content-center flex-wrap">
-                    <button className="btn btn-info">Read</button>
-                    <button className="btn btn-warning">Update</button>
+                    <Link to={`/read/${student.id}`} className="btn btn-info">Read</Link>
+                    <Link to={`/update/${student.id}`} className="btn btn-warning">Update</Link>
                     <button className="btn btn-danger">Delete</button>
                   </td>
                 </tr>
